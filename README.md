@@ -3,5 +3,7 @@ This is a simple tool to go through and collect SSTable Metadata on all SSTables
 #Usage
 python SSTableParser.py [cassandra_data_dir] [keyspace] [table] [is_dse=true/false] [optional, path_to_sstablemetadata]
 
-python SSTableParser.py true /var/lib/cassandra/data test_keyspace test_table true\n
+
+python SSTableParser.py true /var/lib/cassandra/data test_keyspace test_table true
+
 python SSTableParser.py true /var/lib/cassandra/data test_keyspace test_table false /path/to/sstablemetadata
