@@ -75,9 +75,13 @@ def main():
     keyspace = sys.argv[2]
     table = sys.argv[3]
     dse = sys.argv[4]
+
+
     if dse == 'false':
         if len(sys.argv) >= 6:
             path_to_sstablemetadata = sys.argv[5]
+            print path_to_sstablemetadata
+
         else:
             print "Please include the following arguments [cassandra_data_dir] [keyspace] [table] [is_dse=true/false] [optional, path_to_sstablemetadata]"
             sys.exit(1)
@@ -96,10 +100,7 @@ def main():
         if re.match(table + "-*",x) and sstable:
             # Valid SSTable, run dse sstablemetadata
             command = ""
-            if dse == 'true':
-                command = "dse sstablemetadata " + sstable
-            else:
-                command = path_to_sstablemetadata + " " + sstable
+            command = path_to_sstablemetadata + " " + sstable
 
             process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
             output, error = process.communicate()
